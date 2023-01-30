@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Logo from "../assets/foodVilla.jpeg";
 import {Link} from "react-router-dom"
 import useOnline from "../utils/useOnline";
+import userContext from "../utils/UserContext";
 
 const Title = () => {
   return (
@@ -13,6 +14,7 @@ const Title = () => {
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const {user} = useContext(userContext);
 
   const isOnline = useOnline();
   return (
@@ -27,7 +29,8 @@ const Header = () => {
             <li>Cart</li>
           </ul>
         </div>
-        {isOnline ? 'Online' : 'Offline'}
+        {isOnline ? 'Online ' : 'Offline '}
+        <h2>{user.name}</h2>
         {isLoggedIn ? (
           <button onClick={() => setIsLoggedIn(false)}>Logout</button>
         ) : (

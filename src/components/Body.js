@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { filterData } from "../utils/helper";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -21,6 +22,8 @@ const Body = () => {
     setRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestraunt(json?.data?.cards[2]?.data?.data?.cards);
   }
+
+  const { user, setUser } = useContext(UserContext);
 
   if (!restaurants) return null;
 
@@ -45,11 +48,20 @@ const Body = () => {
         >
           Search
         </button>
+        <input
+          type="text"
+          className="search-input"
+          value={user.name}
+          onChange={e => setUser({...user, name: e.target.value})}
+        />
       </div>
       <div className="restaurant-list">
         {filteredRestraunt.map(restaurant => {
           return (
-            <Link to={"/restaurant/" + restaurant.data.id} key={restaurant.data.id}>
+            <Link
+              to={"/restaurant/" + restaurant.data.id}
+              key={restaurant.data.id}
+            >
               <RestaurantCard {...restaurant} />
             </Link>
           );
