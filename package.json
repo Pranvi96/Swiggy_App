@@ -1,5 +1,5 @@
 {
-  "name": "practice_project",
+  "name": "food_app",
   "version": "1.0.0",
   "description": "Practice course",
   "main": "App.js",
@@ -16,6 +16,15 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pranvi96/Swiggy_App.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pranvi96/Swiggy_App/issues"
+  },
+  "homepage": "https://github.com/Pranvi96/Swiggy_App#readme"
 }
